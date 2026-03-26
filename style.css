@@ -1,9 +1,8 @@
-/* Reset e base */
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
   background: #000000;
-
   display: grid;
   grid-template-areas:
     "cabeca cabeca"
@@ -14,34 +13,30 @@ body {
   min-height: 100vh;
 }
 
-/* Cabeçalho */
+
 header {
   grid-area: cabeca;
   background: #271f4b;
-  color: rgb(83, 11, 218);
+  color: #ffffff; /* Ajustado para melhor leitura */
   text-align: center;
   padding: 20px;
 }
 
-/* Main */
+
 main {
   grid-area: corpo;
   background: #c26a06;
   padding: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row; 
 }
 
-/* Sidebar */
+
 aside {
   grid-area: braco;
   background: #a72f26;
-  color: rgb(53, 90, 19);
+  color: #ffffff;
   padding: 20px;
-}
-
-aside h2 {
-  margin-top: 0;
 }
 
 aside ul {
@@ -49,25 +44,29 @@ aside ul {
   padding: 0;
 }
 
-aside ul li {
-  margin: 10px 0;
-}
 
-/* Footer */
 footer {
   grid-area: peh;
   background: #0f2e4b;
-  color: rgb(37, 83, 25);
+  color: #ffffff;
   text-align: center;
-  padding: 15px;
+  padding: 30px 10% 20px 10%;
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
-/* Cards */
+.footer-links {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+
 .mae {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
   justify-content: center;
+  width: 100%;
 }
 
 .card {
@@ -82,16 +81,13 @@ footer {
   height: 520px;
   padding: 20px;
   text-align: center;
-  transition: transform 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-8px);
+  
 }
 
 .imagem_produto {
   width: 240px;
-  height: auto;
+  height: 240px; 
+  object-fit: cover; 
   border-radius: 12px;
   margin-bottom: 16px;
 }
@@ -120,14 +116,9 @@ footer {
   cursor: pointer;
   width: 80%;
   margin-top: 16px;
-  transition: background 0.2s;
 }
 
-.botao:hover {
-  background: #ff9f0f;
-}
 
-/* Responsivo */
 @media (max-width: 900px) {
   body {
     grid-template-areas:
@@ -136,14 +127,5 @@ footer {
       "corpo"
       "peh";
     grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 600px) {
-  aside {
-    display: none;
-  }
-  .card {
-    width: 90%;
   }
 }
