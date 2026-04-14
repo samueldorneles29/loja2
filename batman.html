@@ -3,79 +3,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Produtos</title>
+  <title>Africa-Shops</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header>
-    <h1>AFRICA-SHOPS</h1>
+    <div class="header-top">
+      <div class="nav-links">
+        <img src="img/logotipo.png" alt="Logotipo" class="logo">
+        <button onclick="mostrarSecao('home')" class="btn-nav">HOME</button>
+        <button onclick="mostrarCarrinho()" class="btn-nav">🛒 CARRINHO</button>
+        <button onclick="mostrarSecao('sobre')" class="btn-nav">SOBRE NÓS</button>
+      </div>
+      <h1>Africa-Shops</h1>
+    </div>
   </header>
 
-  <main>
+  <main id="conteudo-principal">
     <aside>
       <h2>Categorias</h2>
       <ul>
-        <li>exoticos</li>
-        <li>domesticos</li>
-        <li>mitologicos</li>
+        <li>Selva</li>
+        <li>Domésticos</li>
+        <li>Raros</li>
       </ul>
     </aside>
 
-    <div class="mae">
+    <section id="home-view" class="mae">
       <div class="card">
-        <img src="oi.jpeg" alt="Produto 1" class="imagem_produto">
-        <div class="descricao">galinha aurina</div>
-        <div class="preco">R$ 67,90</div>
-        <button class="botao">Comprar</button>
+        <img src="img/oi.jpeg" alt="Produto 1" class="imagem_produto">
+        <div class="descricao">Produto Muito Estranho</div>
+        <div class="preco">R$ 59,90</div>
+        <button class="botao" onclick="verProduto('Produto Muito Estranho', 'R$ 59,90', 'img/oi.jpeg', 'Um espécime voador único capturado em pleno salto de paraquedas. Ideal para quem busca adrenalina.')">Comprar</button>
       </div>
 
       <div class="card">
-        <img src="bb.jpeg" alt="Produto 2" class="imagem_produto">
-        <div class="descricao">anão</div>
+        <img src="img/bb.jpeg" alt="Produto 2" class="imagem_produto">
+        <div class="descricao">Item Misterioso</div>
         <div class="preco">R$ 89,90</div>
-        <button class="botao">Comprar</button>
+        <button class="botao" onclick="verProduto('Item Misterioso', 'R$ 89,90', 'img/bb.jpeg', 'Uma entidade de olhar profundo e estilo inquestionável. Adicione um toque de mistério ao seu lar.')">Comprar</button>
       </div>
 
       <div class="card">
-        <img src="samuel.jpeg" alt="Produto 3" class="imagem_produto">
-        <div class="descricao">cavalo humanoide</div>
-        <div class="preco">R$ 500,00</div>
-        <button class="botao">Comprar</button>
+        <img src="img/samuel.jpeg" alt="Produto 3" class="imagem_produto">
+        <div class="descricao">Coisa Rara</div>
+        <div class="preco">R$ 129,00</div>
+        <button class="botao" onclick="verProduto('Coisa Rara', 'R$ 129,00', 'img/samuel.jpeg', 'O rei do estilo urbano. Este exemplar domina a arte de sentar em escadas com elegância rústica.')">Comprar</button>
       </div>
+    </section>
 
-      <div class="card">
-        <img src="oi.jpeg" alt="Produto 4" class="imagem_produto">
-        <div class="descricao">Gadget Tecnológico</div>
-        <div class="preco">R$ 250,00</div>
-        <button class="botao">Comprar</button>
+    <section id="produto-detalhe" class="escondido">
+      <div class="detalhe-container">
+        <img id="detalhe-img" src="" alt="">
+        <div class="detalhe-info">
+          <h2 id="detalhe-titulo"></h2>
+          <p id="detalhe-desc"></p>
+          <div id="detalhe-preco" class="preco"></div>
+          <button class="botao" onclick="adicionarAoCarrinho()">Adicionar ao Carrinho</button>
+          <button class="botao-voltar" onclick="mostrarSecao('home')">Voltar</button>
+        </div>
       </div>
+    </section>
 
-      <div class="card">
-        <img src="bb.jpeg" alt="Produto 5" class="imagem_produto">
-        <div class="descricao">Relíquia Antiga</div>
-        <div class="preco">R$ 499,00</div>
-        <button class="botao">Comprar</button>
-      </div>
+    <section id="sobre-view" class="escondido texto-informativo">
+      <h2>Sobre a Africa-Shops</h2>
+      <p>Bem-vindo à <strong>Africa-Shops</strong>, o lugar onde a paixão pelos animais encontra o que eles merecem.</p>
+      <h3>Nossa História</h3>
+      <p>A Africa-Shops não nasceu apenas como um negócio, mas de um sonho cultivado entre amigos apaixonados pelo mato. O nome "Africa" surgiu como uma homenagem à força, à diversidade e à beleza selvagem do continente que é o berço de tantas espécies...</p>
+      <p>Fundada com o propósito de ser mais que uma simples loja, a Africa-Shops começou pequena, focada em curadoria de produtos de alta qualidade. Com o tempo, nossa "manada" cresceu!</p>
+      <h3>Nossa Missão</h3>
+      <p>Nossa missão é fortalecer o vínculo entre humanos e animais, oferecendo produtos selecionados e nutrição de ponta. Acreditamos que cada pet é o "rei da selva" do seu próprio lar.</p>
+      <button class="botao-voltar" onclick="mostrarSecao('home')">Voltar</button>
+    </section>
 
-      <div class="card">
-        <img src="samuel.jpeg" alt="Produto 6" class="imagem_produto">
-        <div class="descricao">Colecionável Luxo</div>
-        <div class="preco">R$ 85,00</div>
-        <button class="botao">Comprar</button>
-      </div>
-    </div>
+    <section id="carrinho-view" class="escondido">
+      <h2>Seu Carrinho 🛒</h2>
+      <div id="lista-carrinho"></div>
+      <button class="botao" onclick="alert('Compra finalizada!')">Finalizar Compra</button>
+      <button class="botao-voltar" onclick="mostrarSecao('home')">Continuar Comprando</button>
+    </section>
+
   </main>
 
   <footer>
-    <div class="footer-links">
-      Condições de Uso | Notificação de Privacidade | Cookies | Anúncios Baseados em Interesses
-    </div>
-    <div class="footer-info">
-      © 1967-2026 AFRICA-SHOPS.com, Inc. ou suas afiliadas<br>
-      AFRICA-SHOPS Serviços de Varejo do Brasil Ltda. | CNPJ 29.467.210/0007-06<br>
-      Av. Q, 2099, Empire States, 18° andar - Gothan City CEP: 3377167-888 | Não fale conosco | ajuda-africa@shops.com.br<br>
-      <strong>Formas de pagamento aceitas:</strong> cartões de crédito (Sega, MisterCardo, Ego e American Pysco), cartões de débito (Vista e Ego), Boleto, Pix e Robux
-    </div>
+    <p>&copy; 2026 Africa-Shops - Todos os direitos reservados.</p>
   </footer>
+
+  <script>
+    let carrinho = [];
+    let produtoAtual = {};
+
+    function mostrarSecao(id) {
+      document.getElementById('home-view').classList.add('escondido');
+      document.getElementById('produto-detalhe').classList.add('escondido');
+      document.getElementById('sobre-view').classList.add('escondido');
+      document.getElementById('carrinho-view').classList.add('escondido');
+      
+      document.getElementById(id + '-view') ? 
+        document.getElementById(id + '-view').classList.remove('escondido') : 
+        document.getElementById(id).classList.remove('escondido');
+    }
+
+    function verProduto(nome, preco, img, desc) {
+      produtoAtual = { nome, preco, img };
+      document.getElementById('detalhe-titulo').innerText = nome;
+      document.getElementById('detalhe-preco').innerText = preco;
+      document.getElementById('detalhe-img').src = img;
+      document.getElementById('detalhe-desc').innerText = desc;
+      mostrarSecao('produto-detalhe');
+    }
+
+    function adicionarAoCarrinho() {
+      carrinho.push(produtoAtual);
+      alert(produtoAtual.nome + " adicionado ao carrinho!");
+    }
+
+    function mostrarCarrinho() {
+      const lista = document.getElementById('lista-carrinho');
+      lista.innerHTML = "";
+      if (carrinho.length === 0) {
+        lista.innerHTML = "<p>Seu carrinho está vazio.</p>";
+      } else {
+        carrinho.forEach((item, index) => {
+          lista.innerHTML += `<div class="item-carrinho">${item.nome} - ${item.preco}</div>`;
+        });
+      }
+      mostrarSecao('carrinho');
+    }
+  </script>
 </body>
 </html>
